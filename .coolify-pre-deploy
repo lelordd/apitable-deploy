@@ -1,0 +1,3 @@
+#!/bin/sh
+chmod +x ./init-db.sh
+./init-db.sh

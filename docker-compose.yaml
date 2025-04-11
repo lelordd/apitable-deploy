@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   apitable:
-    image: apitable/all-in-one:latest
+    image: mon-apitable-fix
     container_name: apitable
     restart: always
     ports:

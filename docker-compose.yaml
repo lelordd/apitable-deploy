@@ -2,33 +2,30 @@ version: '3.8'
 
 services:
   apitable:
-    build:
-      context: .
+    image: apitable/all-in-one:latest
     container_name: apitable
     restart: always
     ports:
-      - '8080:80'
+      - "8080:8000"
     environment:
       - NODE_ENV=production
       - DB_TYPE=postgres
-      - DB_HOST=db
+      - DB_HOST=apitable-db
       - DB_PORT=5432
       - DB_USERNAME=apitable
       - DB_PASSWORD=apitablepassword
       - DB_DATABASE=apitable_db
-    depends_on:
-      - db
 
-  db:
+  apitable-db:
     image: postgres:15
-    container_name: apitable-postgres
+    container_name: apitable-db
     restart: always
     environment:
       POSTGRES_DB: apitable_db
       POSTGRES_USER: apitable
       POSTGRES_PASSWORD: apitablepassword
     volumes:
-      - apitable-db-data:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
 
 volumes:
-  apitable-db-data:
+  pgdata:

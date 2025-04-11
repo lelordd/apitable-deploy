@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   apitable:
-    image: mon-apitable-fix
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: apitable
     restart: always
     ports:
